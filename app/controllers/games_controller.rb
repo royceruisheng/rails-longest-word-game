@@ -1,4 +1,4 @@
-require 'uri'
+require 'open-uri'
 require 'json'
 
 class GamesController < ApplicationController
@@ -18,6 +18,7 @@ class GamesController < ApplicationController
     @letters = params[:letters]
     @word_arr = @word.downcase.chars
     @letters_arr = @letters.downcase.chars
+    @letters_join = @letters.chars.join(', ')
 
     def char_to_hash(char_arr)
       arr = {}
@@ -41,8 +42,18 @@ class GamesController < ApplicationController
       true
     end
 
-    @url = "https://wagon-dictionary.herokuapp.com/#{@word}"
+    def check_english_word?
+      url = "https://wagon-dictionary.herokuapp.com/#{@word}"
+      file_doc = URI.open(url).read
+      file_json = JSON.parse(file_doc)
+      return file_json["found"]
+    end
 
-    binding.pry
+    def result
+      return "Sorry but #{@word} cannot be built out of #{@letters_join}" unless check_valid_word?
+      return "Sorry but #{@word} does not seem to be a valid english word." unless check_english_word?
+      return "Congrats! #{@word} is a valid English word."
+    end
+    @result = result
   end
 end

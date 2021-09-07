@@ -1,6 +1,19 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&family=Quando&display=swap');
+
+body {
+  font-family: Judson;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: Quando;
+  color: #90ADC6;
+}
 
 .container {
   display: flex;
@@ -11,13 +24,13 @@
 
 .letterbox {
   display: flex;
-  background-color: bisque;
-  color: darkslategray;
+  background-color: #FAD02C;
+  color: #333652;
   justify-content: center;
   align-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid pink;
+  border: 1px solid #E9EAEC;
   border-radius: 4px;
 }
 
@@ -32,7 +45,34 @@
   font-weight: bold;
 }
 
-h1 {
-  font-size: 36px;
-  font-weight: bold;
+input[type='text']{
+  width: 60%;
+  height: 24px;
+  padding: 8px;
+  font-size: 18px;
+  border:1px solid #333652;
+  border-radius: 8px;
+  background-color: #E9EAEC;
+}
+
+input[type='text']:active {
+  border:1px solid #FAD02C;
+}
+
+input[type='submit'] {
+  width: 30%;
+  padding: 10px;
+  border:1px solid #E9EAEC;
+  background-color: #333652;
+  color: #E9EAEC;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+a {
+  font-style: italic;
+  color: #90ADC6;
+  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
