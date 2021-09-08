@@ -50,10 +50,17 @@ class GamesController < ApplicationController
     end
 
     def result
-      return "Sorry but #{@word} cannot be built out of #{@letters_join}" unless check_valid_word?
-      return "Sorry but #{@word} does not seem to be a valid english word." unless check_english_word?
-      return "Congrats! #{@word} is a valid English word."
+      if !check_valid_word?
+        @str1 = "Sorry but "
+        @str2 = " cannot be built out of #{@letters_join}."
+      elsif !check_english_word?
+        @str1 = "Sorry but "
+        @str2 = " does not seem to be a valid english word."
+      else
+        @str1 = "Congrats! "
+        @str2 = " is a valid English word."
+      end
     end
-    @result = result
+    result
   end
 end
